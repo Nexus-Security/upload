@@ -16,10 +16,12 @@ if (!isset($_SESSION['authenticated']) || !$_SESSION['authenticated']) {
     exit;
 }
 
-// Ensure the uploads directory exists
+// Ensure the uploads directory exists and is writable
 $target_dir = "uploads/";
 if (!is_dir($target_dir)) {
-    mkdir($target_dir, 0755, true);
+    if (!mkdir($target_dir, 0755, true)) {
+        die("Failed to create directories.");
+    }
 }
 
 // File upload code
@@ -29,6 +31,7 @@ if (isset($_FILES['fileToUpload'])) {
         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
+        echo "Error: " . error_get_last()['message'];
     }
 }
 ?>
