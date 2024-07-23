@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$correct_password = 'securepassword123'; // Set your desired password here
+$correct_password = 'hog63h'; // Set your desired password here
 
 if (isset($_POST['password']) && $_POST['password'] === $correct_password) {
     $_SESSION['authenticated'] = true;
