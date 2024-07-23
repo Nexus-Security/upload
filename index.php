@@ -94,6 +94,12 @@ $files = array_diff(scandir('uploads'), array('.', '..'));
     <p>Used Space: <?php echo $driveSize['used']; ?></p>
     <p>Free Space: <?php echo $driveSize['free']; ?></p>
 
+    <h2>Upload File</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload File" name="submit">
+    </form>
+
     <h2>File List</h2>
     <table>
         <thead>
